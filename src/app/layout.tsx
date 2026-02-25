@@ -19,16 +19,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script
+          // set initial theme as early as possible to avoid flash
+          dangerouslySetInnerHTML={{
+            __html: `try{(function(){var t=localStorage.getItem('theme');if(t==='dark'){document.documentElement.classList.add('dark');}else if(t==='light'){document.documentElement.classList.remove('dark');}else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){document.documentElement.classList.add('dark');}})()}catch(e){};`,
+          }}
+        />
       </head>
       <body
-        className={`${inter.variable} font-sans antialiased bg-zinc-950 text-zinc-100`}
+        className={`${inter.variable} font-sans antialiased bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 m-0 p-0`}
         suppressHydrationWarning
       >
-        <Navbar />
-        {children}
+        <div className="w-full m-0 p-0">
+          <Navbar />
+          {children}
+        </div>
       </body>
     </html>
   );

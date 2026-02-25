@@ -7,3 +7,43 @@
     text-wrap: balance;
   }
 }
+
+:root {
+  --background: #fafafa; /* soft off-white */
+  --foreground: #0f1724; /* dark text for light mode (approx. zinc-900) */
+}
+
+/* dark theme variables */
+html.dark {
+  --background: #0b0f12; /* dark background (approx. zinc-950) */
+  --foreground: #e6edf3; /* light text for dark mode (approx. zinc-100) */
+}
+
+/* apply variables to body so tailwind utilities can still be used */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin: 0;
+  padding: 0;
+}
+
+/* In light mode, force readable dark colors for common text elements even
+   if components use explicit light classes. This prioritizes readability. */
+html:not(.dark) body,
+html:not(.dark) body :where(p,span,a,h1,h2,h3,h4,h5,h6,li,button,label,strong,small,abbr,blockquote,figcaption,summary) {
+  color: var(--foreground) !important;
+  transition: color 0.3s ease;
+}
+
+/* Ensure links inherit color in light mode */
+html:not(.dark) a {
+  color: inherit !important;
+}
+
+/* Smooth transitions for theme switching */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
