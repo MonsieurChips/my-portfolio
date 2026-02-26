@@ -30,7 +30,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen">
-      <div className="max-w-full px-6 sm:px-8 lg:px-10 py-6">
+      <div className="w-full max-w-none px-4 sm:px-6 lg:px-8 py-8">
         <BentoGrid>
           <BentoCard 
             className="md:col-span-2 lg:col-span-1 md:row-span-2"
@@ -62,7 +62,7 @@ export default function Home() {
             <div className="flex items-start gap-4">
               <div className="w-24 h-24 bg-zinc-100 dark:bg-zinc-800 rounded-full flex items-center justify-center text-2xl" aria-hidden>🥔</div>
               <div>
-                <p className="text-zinc-600 dark:text-zinc-300">I'm a passionate full stack developer who loves creating elegant solutions to complex problems. With experience in modern web technologies, I focus on building user-centric applications that make an impact.</p>
+                <p className="text-zinc-600 dark:text-zinc-300">i am a passionate full stack developer who loves creating elegant solutions to complex problems. With experience in modern web technologies, I focus on building user-centric applications that make an impact.</p>
               </div>
             </div>
           </BentoCard>
